@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
+export const dynamic = 'force-dynamic';
+
 // Initialize Redis client with environment variables
 const redis = new Redis({
   url: process.env.KV_REST_API_URL,
