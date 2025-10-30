@@ -67,7 +67,7 @@ export function TrafficLightTimerCard({
 
     return (
         <motion.div
-            className="p-6 py-14 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl text-white overflow-hidden min-w-[45vw] min-h-[45vw] flex flex-col justify-between"
+            className="p-6 py-14 bg-slate-700 border border-gray-700 rounded-xl shadow-2xl text-white w-full overflow-hidden flex flex-col justify-between"
             whileHover={{ scale: 1.03 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
         >
@@ -92,7 +92,7 @@ export function TrafficLightTimerCard({
                         cy={size / 2}
                         r={radius}
                         strokeWidth={strokeWidth}
-                        className="text-gray-700"
+                        className="text-gray-800"
                         fill="transparent"
                         stroke="currentColor"
                     />
@@ -116,7 +116,7 @@ export function TrafficLightTimerCard({
                     <span className="text-8xl font-bold tracking-tighter bg-clip-text text-gray-400">
                         <AnimatedNumber value={timeRemaining} />
                     </span>
-                    <span className="text-lg font-medium text-gray-500 -mt-2">
+                    <span className="text-xl font-medium text-gray-400 -mt-2">
                         seconds
                     </span>
                 </div>

@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { TrafficDensityCard } from '@/Components/TrafficDensityCard'
+import EmbeddedStimulation from '@/Components/EmbeddedStimulation'
 import { TrafficLightTimerCard } from '@/Components/TrafficLightTimeCard'
 
 const MIN_CYCLE_TIME = 30;
@@ -139,9 +140,23 @@ const Page = () => {
 
 
   return (
-    <div className='bg-black text-white min-h-[90vh] text-xl p-4'>
-      <section className="flex flex-col items-center justify-center gap-10 mt-10">
-        <div className="flex flex-col lg:flex-row items-stretch justify-center gap-10">
+    <div className='bg-black text-white h-[90vh] text-xl p-4 flex gap-10'>
+      <section className='flex flex-col justify-between w-[50%] bg-gray-900 p-5 py-15 rounded-2xl'>
+        <EmbeddedStimulation />
+        <div className="flex flex-col items-center justify-center px-8 py-2 gap-10 w-full max-w-[92vw]">
+          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-8xl font-medium text-gray-900 rounded-lg group bg-linear-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 ">
+            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+              North-South
+            </span>
+          </button>
+          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-8xl font-medium text-gray-900 rounded-lg group bg-linear-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+              East-West
+            </span>
+          </button>
+        </div>
+      </section>
+      <section className='flex flex-col justify-between gap-6 w-[50%] bg-gray-900 p-5 py-15 rounded-2xl'>
           <TrafficDensityCard
             density={trafficData.density}
             status={trafficData.status}
@@ -153,19 +168,7 @@ const Page = () => {
             initialTime={currentLightState.duration}
             totalCycleTime={totalCycleTime}
           />
-        </div>
-        <div className="flex items-center justify-center bg-gray-950 px-8 py-2 gap-10 w-full max-w-[92vw]">
-          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-3xl font-medium text-gray-900 rounded-lg group bg-linear-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-              North-South
-            </span>
-          </button>
-          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-3xl font-medium text-gray-900 rounded-lg group bg-linear-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-              East-West
-            </span>
-          </button>
-        </div>
+
       </section>
     </div>
   )
