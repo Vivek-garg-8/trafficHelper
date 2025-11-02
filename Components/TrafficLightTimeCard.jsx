@@ -17,13 +17,13 @@ function AnimatedNumber({ value }) {
     return <motion.span>{displayValue}</motion.span>;
 }
 
-export function TrafficLightTimerCard({ 
-  currentLight,     // "Green", "Yellow", or "Red"
-  timeRemaining,    // Current seconds left (e.g., 12)
-  initialTime,      // Initial time for this light (e.g., 15)
-  totalCycleTime    // Total time for one full cycle
+export function TrafficLightTimerCard({
+    currentLight,     // "Green", "Yellow", or "Red"
+    timeRemaining,    // Current seconds left (e.g., 12)
+    initialTime,      // Initial time for this light (e.g., 15)
+    totalCycleTime    // Total time for one full cycle
 }) {
-    
+
     // 1. Define colors for each light state
     const statusConfig = {
         Green: {
@@ -47,7 +47,7 @@ export function TrafficLightTimerCard({
     const radius = (size - strokeWidth) / 2;
     const circumference = radius * 2 * Math.PI;
     const progress = initialTime > 0 ? timeRemaining / initialTime : 0;
-    
+
     // Create a spring for the progress
     const progressSpring = useSpring(progress, {
         damping: 20,
@@ -71,65 +71,17 @@ export function TrafficLightTimerCard({
             whileHover={{ scale: 1.03 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
         >
-            {/* Header */}
-            <div className="flex justify-between items-center mb-4 text-3xl">
-                <h3 className="font-semibold text-gray-200">
-                    Light Status
-                </h3>
-                <span
-                    className={`px-3 py-1 text-2xl font-medium rounded-full border ${config.badge}`}
-                >
-                    {currentLight}
-                </span>
-            </div>
-
             {/* Main Display: Circular Progress and Countdown */}
-            <div className="relative flex flex-col items-center justify-center">
-                <svg width={size} height={size} className="transform -rotate-90">
-                    {/* Background "track" circle */}
-                    <circle
-                        cx={size / 2}
-                        cy={size / 2}
-                        r={radius}
-                        strokeWidth={strokeWidth}
-                        className="text-gray-800"
-                        fill="transparent"
-                        stroke="currentColor"
-                    />
-                    {/* Animated "progress" circle */}
-                    <motion.circle
-                        cx={size / 2}
-                        cy={size / 2}
-                        r={radius}
-                        strokeWidth={strokeWidth}
-                        className={config.progress}
-                        fill="transparent"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeDasharray={circumference}
-                        style={{ strokeDashoffset }}
-                    />
-                </svg>
-
+            <div className="relative flex flex-col items-center justify-center">\
                 {/* Countdown Number (positioned in the center) */}
                 <div className="absolute flex flex-col items-center">
-                    <span className="text-8xl font-bold tracking-tighter bg-clip-text text-gray-400">
-                        <AnimatedNumber value={timeRemaining} />
-                    </span>
                     <span className="text-xl font-medium text-gray-400 -mt-2">
-                        seconds
+                        Total Cycle Time
+                    </span>
+                    <span className="text-8xl font-bold tracking-tighter bg-clip-text text-gray-400">
+                        {totalCycleTime}s
                     </span>
                 </div>
-            </div>
-
-            {/* Footer: Total Cycle Time */}
-            <div className="text-center mt-6">
-                <p className="text-sm text-gray-500 uppercase tracking-wider">
-                    Total Cycle Time
-                </p>
-                <p className="text-3xl font-semibold text-gray-200 mt-1">
-                    {totalCycleTime}s
-                </p>
             </div>
         </motion.div>
     );

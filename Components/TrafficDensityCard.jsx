@@ -45,7 +45,7 @@ function Sparkline({ data, width = 550, height = 400 }) {
     return (
         <svg
             width="90%"
-            height="70%"
+            height="100%"
             viewBox={`0 0 ${width} ${height}`}
             preserveAspectRatio="none"
             className='bg-gray-800 rounded-2xl mt-6 p-5'
